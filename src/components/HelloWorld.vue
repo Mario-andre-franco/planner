@@ -11,7 +11,7 @@
           :drop-placeholder="{className: 'placeholder'}">
 
             <Draggable v-for="card in cards.segunda" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} </div>
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}} </div>
             </Draggable>
           </Container>  
         </div>    
@@ -25,7 +25,7 @@
           :drop-placeholder="{className: 'placeholder'}">
 
             <Draggable v-for="card in cards.terca" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} </div>
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}} </div>
             </Draggable>
           </Container>  
         </div>    
@@ -39,7 +39,7 @@
           :drop-placeholder="{className: 'placeholder'}">
 
             <Draggable v-for="card in cards.quarta" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} </div>
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
         </div>    
@@ -47,13 +47,13 @@
         <div class="dia-da-semana">
           <h2 class="dia">Quinta</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('segunda', $event)"
-          @drop="handleDrop('segunda', $event)"
+          @drag-start="handleDragStart('quinta', $event)"
+          @drop="handleDrop('quinta', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.segunda" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} </div>
+            <Draggable v-for="card in cards.quinta" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
         </div>    
@@ -82,7 +82,7 @@
           :drop-placeholder="{className: 'placeholder'}">
 
             <Draggable v-for="card in cards.sabado" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} </div>
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
         </div>    
