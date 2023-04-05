@@ -1,58 +1,185 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <body>
+    <section class="numbers tcenter pt-14 pb-14">
+      <div class="board">
+        <div class="dia-da-semana">
+          <h2 class="dia">Segunda</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('segunda', $event)"
+          @drop="handleDrop('segunda', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.segunda" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} </div>
+            </Draggable>
+          </Container>  
+        </div>    
+         
+        <div class="dia-da-semana">
+          <h2 class="dia">Terça</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('terca', $event)"
+          @drop="handleDrop('terca', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.terca" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} </div>
+            </Draggable>
+          </Container>  
+        </div>    
+        
+        <div class="dia-da-semana">
+          <h2 class="dia">Quarta</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('quarta', $event)"
+          @drop="handleDrop('quarta', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.quarta" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} </div>
+            </Draggable>
+          </Container>  
+        </div>    
+
+        <div class="dia-da-semana">
+          <h2 class="dia">Quinta</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('segunda', $event)"
+          @drop="handleDrop('segunda', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.segunda" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} </div>
+            </Draggable>
+          </Container>  
+        </div>    
+
+        <div class="dia-da-semana">
+          <h2 class="dia">Sexta</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('sexta', $event)"
+          @drop="handleDrop('sexta', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.sexta" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
+              
+            </Draggable>
+          </Container>  
+        </div>    
+
+        <div class="dia-da-semana">
+          <h2 class="dia">Sábado</h2>
+          <Container group-name="aluno"
+          @drag-start="handleDragStart('sabado', $event)"
+          @drop="handleDrop('sabado', $event)"
+          :get-child-payload="getChildPayload"
+          :drop-placeholder="{className: 'placeholder'}">
+
+            <Draggable v-for="card in cards.sabado" :key="card.id">
+              <div class="nome-aluno"> {{ card.text }} </div>
+            </Draggable>
+          </Container>  
+        </div>    
+
+      </div>
+    </section> 
+  </body>
 </template>
 
 <script>
+import initialCards from '../initialCards.js'
+import { Container, Draggable } from 'vue-smooth-dnd';
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name: 'App',
+  components: {
+    Container,
+    Draggable
+  },
+  data: () => ({
+    cards: {
+      segunda: initialCards.segunda,
+      terca: initialCards.terca,
+      quarta: initialCards.quarta,
+      quinta: initialCards.quinta,
+      sexta: initialCards.sexta,
+      sabado: initialCards.sabado
+    },
+    dragginCard: {
+      lane: '',
+      index: -1,
+      cardData: {},
+    }
+  }),
+  methods: {
+    handleDragStart(lane,dragResult) {
+      const { payload, isSource } = dragResult;
+      if(isSource) {
+        this.dragginCard = {
+          lane,
+          index: payload.index,
+          cardData: {
+            ...this.cards[lane][payload.index]
+          }
+        }
+      }
+    },
+    handleDrop(lane,dropResult) {
+      const {removedIndex, addedIndex} = dropResult;
+      if(lane == this.dragginCard.lane && removedIndex == addedIndex) {
+        return;
+      }
+      if(removedIndex !== null) {
+        this.cards[lane].splice(removedIndex,1);
+      }
+      if(addedIndex !== null) {
+        this.cards[lane].splice(addedIndex, 0, this.dragginCard.cardData)
+      }
+    },
+    getChildPayload(index) {
+      return {
+        index,
+      }
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  .board {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1.2rem 0.8rem;
+    align-items: flex-start;
+  }
+
+  .dia {
+  color: #000;
+  padding: 0.8rem 0.5rem;
+  margin-bottom: 0.6rem;
+  }
+  .dia-da-semana {
+    background: var(--color-grey);
+    width: 23rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.1rem 0.2rem 0 rgba(33, 33, 33, 0.1);
+    margin: 0 0.8rem;
+    padding: 0. 0.7rem;
+  }
+
+  .nome-aluno {
+    background: var(--color-white);
+    padding: 1.4rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 1px rgba(9, 30, 66, 0.25);
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+
+  }
 </style>
