@@ -1,6 +1,12 @@
 <template>
   <body>
-    <section class="numbers tcenter pt-14 pb-14">
+    <header>
+      <div class="text-container">
+        <h1 class="h1-large">PLANNER PROFESSORA MARICOTINHA</h1>
+      </div>
+    </header>
+    <br>
+    <section>
       <div class="board">
         <div class="dia-da-semana">
           <h2 class="dia">Segunda</h2>
@@ -151,6 +157,19 @@ export default {
 </script>
 
 <style scoped>
+
+  .text-container {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  .h1-large {
+    font-size: 3.375rem;
+    line-height: 4rem;
+    font-weight: 700;
+    font-family: "Inter";
+    letter-spacing: -0.6px;
+  }
   .board {
     display: flex;
     justify-content: flex-start;
