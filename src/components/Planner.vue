@@ -16,8 +16,8 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.segunda" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}} </div>
+            <Draggable v-for="card in cards" :key="card.id">
+              <div class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
         </div>    
@@ -30,7 +30,7 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.terca" :key="card.id">
+            <Draggable v-for="card in cards" :key="card.id">
               <div class="nome-aluno"> {{ card.text }} | {{card.horario}} </div>
             </Draggable>
           </Container>  
@@ -44,7 +44,7 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.quarta" :key="card.id">
+            <Draggable v-for="card in cards" :key="card.id">
               <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
@@ -58,7 +58,7 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.quinta" :key="card.id">
+            <Draggable v-for="card in cards" :key="card.id">
               <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
@@ -72,7 +72,7 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.sexta" :key="card.id">
+            <Draggable v-for="card in cards" :key="card.id">
               <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
               
             </Draggable>
@@ -87,7 +87,7 @@
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
 
-            <Draggable v-for="card in cards.sabado" :key="card.id">
+            <Draggable v-for="card in cards" :key="card.id">
               <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
             </Draggable>
           </Container>  
@@ -99,8 +99,10 @@
 </template>
 
 <script>
-import initialCards from '../initialCards.js'
+import axios from 'axios'
 import { Container, Draggable } from 'vue-smooth-dnd';
+import config from '../config/config.js'
+
 export default {
   name: 'App',
   components: {
@@ -108,14 +110,7 @@ export default {
     Draggable
   },
   data: () => ({
-    cards: {
-      segunda: initialCards.segunda,
-      terca: initialCards.terca,
-      quarta: initialCards.quarta,
-      quinta: initialCards.quinta,
-      sexta: initialCards.sexta,
-      sabado: initialCards.sabado
-    },
+    cards: [],
     dragginCard: {
       lane: '',
       index: -1,
@@ -152,6 +147,15 @@ export default {
         index,
       }
     }
+  },
+  mounted () {
+    axios.get(`${config.apiBaseUrl}/alunos`)
+    .then(response => {
+      this.cards = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
 </script>
@@ -176,6 +180,14 @@ export default {
     margin: 1.2rem 0.8rem;
     align-items: flex-start;
   }
+
+  @media only screen and (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
   .dia {
   color: #000;
