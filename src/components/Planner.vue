@@ -9,76 +9,66 @@
     <section>
       <div class="board">
         <div class="dia-da-semana">
-          <h2 class="dia">Segunda</h2>
+          <h2 class="dia">Segunda-Feira</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('segunda', $event)"
-          @drop="handleDrop('segunda', $event)"
+          @drag-start="handleDragStart('segunda-feira', $event)"
+          @drop="handleDrop('segunda-feira', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
+              <div v-if="card.diaSemana === 'segunda-feira'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
-        </div>    
-         
+        </div>   
         <div class="dia-da-semana">
-          <h2 class="dia">Terça</h2>
+          <h2 class="dia">Terça-Feira</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('terca', $event)"
-          @drop="handleDrop('terca', $event)"
+          @drag-start="handleDragStart('terça-feira', $event)"
+          @drop="handleDrop('terça-feira', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}} </div>
+              <div v-if="card.diaSemana === 'terca-feira'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
-        </div>    
-        
+        </div>  
         <div class="dia-da-semana">
-          <h2 class="dia">Quarta</h2>
+          <h2 class="dia">Quarta-Feira</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('quarta', $event)"
-          @drop="handleDrop('quarta', $event)"
+          @drag-start="handleDragStart('quarta-feira', $event)"
+          @drop="handleDrop('quarta-feira', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
+              <div v-if="card.diaSemana === 'quarta-feira'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
-        </div>    
-
+        </div>     
         <div class="dia-da-semana">
-          <h2 class="dia">Quinta</h2>
+          <h2 class="dia">Quinta-Feira</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('quinta', $event)"
-          @drop="handleDrop('quinta', $event)"
+          @drag-start="handleDragStart('quinta-feira', $event)"
+          @drop="handleDrop('quinta-feira', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
+              <div v-if="card.diaSemana === 'quinta-feira'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
         </div>    
-
         <div class="dia-da-semana">
-          <h2 class="dia">Sexta</h2>
+          <h2 class="dia">Sexta-Feira</h2>
           <Container group-name="aluno"
-          @drag-start="handleDragStart('sexta', $event)"
-          @drop="handleDrop('sexta', $event)"
+          @drag-start="handleDragStart('sexta-feira', $event)"
+          @drop="handleDrop('sexta-feira', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
-              
+              <div v-if="card.diaSemana === 'sexta-feira'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} 
+              </div>
             </Draggable>
           </Container>  
-        </div>    
-
+        </div>  
         <div class="dia-da-semana">
           <h2 class="dia">Sábado</h2>
           <Container group-name="aluno"
@@ -86,13 +76,11 @@
           @drop="handleDrop('sabado', $event)"
           :get-child-payload="getChildPayload"
           :drop-placeholder="{className: 'placeholder'}">
-
             <Draggable v-for="card in cards" :key="card.id">
-              <div class="nome-aluno"> {{ card.text }} | {{card.horario}}</div>
+              <div v-if="card.diaSemana === 'sábado'" class="nome-aluno"> {{ card.nome }} | {{card.horarioAula}} </div>
             </Draggable>
           </Container>  
-        </div>    
-
+        </div>            
       </div>
     </section> 
   </body>
