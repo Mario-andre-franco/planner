@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div class="">
+        <div class="h-auto">
             <a href="#" class="p-4 block no-underline text-lilac-bush-700 border-b-2 border-t-2 border-white flex justify-between" @click.prevent="active = !active">
                 <strong>{{title}}</strong>
                 <span class="down-Arrow" v-show="!active">&#9660;</span>

@@ -1,14 +1,14 @@
 <template>
-    <div class="bg-gradient-to-t from-lilac-bush-400 to-lilac-bush-800 h-auto flex justify-center">
-        <div class="container flex flex-col mx-auto my-auto bg-lilac-bush-400 ">
+    <div class="bg-gradient-to-t from-lilac-bush-400 to-lilac-bush-800 h-screen flex items-center">
+        <div class="container flex flex-col mb-[10rem] mx-auto my-auto bg-lilac-bush-400 ">
                 <accordion title="Segunda-Feira" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosSegunda" :key="index">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosSegunda" :key="index">
                         <p class="pb-5 flex justify-start text-lilac-bush-50">{{aluno.nome}} - {{ aluno.horarioAula }}</p> 
                     </div>
                 </accordion>
                 <accordion title="Terça-Feira" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosTerca" :key="index">
-                        <div v-if="alunosTerca.length === 0">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosTerca" :key="index">
+                        <div v-if="alunosTerca.length == '0' ">
                             <p class="pb-5 flex justify-start text-lilac-bush-50">Nenhum aluno nesse dia</p>
                         </div>
                         <div v-else>
@@ -17,25 +17,25 @@
                     </div>
                 </accordion>    
                 <accordion title="Quarta-Feira" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosQuarta" :key="index">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosQuarta" :key="index">
                         <p class="pb-5 flex justify-start text-lilac-bush-50">{{aluno.nome}} - {{ aluno.horarioAula }}</p> 
                     </div>
                     
                 </accordion>  
                 <accordion title="Quinta-Feira" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosQuinta" :key="index">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosQuinta" :key="index">
                         <p class="pb-5 flex justify-start text-lilac-bush-50">{{aluno.nome}} - {{ aluno.horarioAula }}</p> 
                     </div>
                     
                 </accordion>  
                 <accordion title="Sexta-Feira" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosSexta" :key="index">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosSexta" :key="index">
                         <p class="pb-5 flex justify-start text-lilac-bush-50">{{aluno.nome}} - {{ aluno.horarioAula }}</p> 
                     </div>
                     
                 </accordion>  
                 <accordion title="Sábado" class="text-lg">
-                    <div class="flex flex-col" v-for="(aluno,index) in alunosSabado" :key="index">
+                    <div class="flex items-center justify-between pb-5" v-for="(aluno,index) in alunosSabado" :key="index">
                         <p class="pb-5 flex justify-start text-lilac-bush-50">{{aluno.nome}} - {{ aluno.horarioAula }}</p> 
                     </div>
                     
